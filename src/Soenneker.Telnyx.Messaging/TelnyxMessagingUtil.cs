@@ -42,7 +42,7 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
                 WebhookUrl = webhookUrl
             };
 
-            MessageResponse? response = await client.Messages.PostAsync(request, cancellationToken: cancellationToken).NoSync();
+            SendMessage200Response? response = await client.Messages.PostAsync(request, cancellationToken: cancellationToken).NoSync();
 
             _logger.LogInformation("Successfully sent message from {From} to {To}", from, to);
             return response?.Data;
@@ -73,7 +73,7 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
                 WebhookUrl = webhookUrl
             };
 
-            MessageResponse? response = await client.Messages.PostAsync(request, cancellationToken: cancellationToken).NoSync();
+            SendMessage200Response? response = await client.Messages.PostAsync(request, cancellationToken: cancellationToken).NoSync();
 
             _logger.LogInformation("Successfully sent MMS message from {From} to {To}", from, to);
             return response?.Data;
