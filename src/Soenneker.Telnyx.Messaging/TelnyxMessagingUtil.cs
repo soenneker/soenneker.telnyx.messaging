@@ -24,7 +24,7 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
         _logger = logger;
     }
 
-    public async ValueTask<OutboundMessagePayload?> Send(string from, string to, string text, string messagingProfileId, string? webhookUrl = null,
+    public async ValueTask<MessagingOutboundMessagePayload?> Send(string from, string to, string text, string messagingProfileId, string? webhookUrl = null,
         Dictionary<string, string>? webhookHeaders = null, CancellationToken cancellationToken = default)
     {
         try
@@ -54,7 +54,7 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
         }
     }
 
-    public async ValueTask<OutboundMessagePayload?> SendMms(string from, string to, string text, List<string> mediaUrls, string messagingProfileId,
+    public async ValueTask<MessagingOutboundMessagePayload?> SendMms(string from, string to, string text, List<string> mediaUrls, string messagingProfileId,
         string? webhookUrl = null, Dictionary<string, string>? webhookHeaders = null, CancellationToken cancellationToken = default)
     {
         try

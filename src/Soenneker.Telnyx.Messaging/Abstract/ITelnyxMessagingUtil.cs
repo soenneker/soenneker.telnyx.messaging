@@ -21,7 +21,7 @@ public interface ITelnyxMessagingUtil
     /// <param name="webhookHeaders">Optional headers to send with the webhook.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The created message payload if successful; otherwise, <see langword="null"/>.</returns>
-    ValueTask<OutboundMessagePayload?> Send(string from, string to, string text, string messagingProfileId, string? webhookUrl = null,
+    ValueTask<MessagingOutboundMessagePayload?> Send(string from, string to, string text, string messagingProfileId, string? webhookUrl = null,
         Dictionary<string, string>? webhookHeaders = null, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -36,7 +36,7 @@ public interface ITelnyxMessagingUtil
     /// <param name="webhookHeaders">Optional headers to send with the webhook.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The created message payload if successful; otherwise, <see langword="null"/>.</returns>
-    ValueTask<OutboundMessagePayload?> SendMms(string from, string to, string text, List<string> mediaUrls, string messagingProfileId,
+    ValueTask<MessagingOutboundMessagePayload?> SendMms(string from, string to, string text, List<string> mediaUrls, string messagingProfileId,
         string? webhookUrl = null, Dictionary<string, string>? webhookHeaders = null, CancellationToken cancellationToken = default);
 
     /// <summary>
