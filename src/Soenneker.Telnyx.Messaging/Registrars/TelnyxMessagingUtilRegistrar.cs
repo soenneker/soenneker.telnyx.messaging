@@ -6,7 +6,7 @@ using Soenneker.Telnyx.Messaging.Abstract;
 namespace Soenneker.Telnyx.Messaging.Registrars;
 
 /// <summary>
-/// A resilient .NET utility for Telnyx Messaging.
+/// Registers Telnyx SMS and MMS sending and message retrieval.
 /// </summary>
 public static class TelnyxMessagingUtilRegistrar
 {

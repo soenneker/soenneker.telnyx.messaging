@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace Soenneker.Telnyx.Messaging;
 
-/// <inheritdoc cref="ITelnyxMessagingUtil"/>
 public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
 {
     private readonly ITelnyxClientUtil _telnyxClientUtil;
@@ -25,7 +24,7 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
     }
 
     public async ValueTask<MessagingOutboundMessagePayload?> Send(string from, string to, string text, string messagingProfileId, string? webhookUrl = null,
-        Dictionary<string, string>? webhookHeaders = null, CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -47,6 +46,10 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
             _logger.LogInformation("Successfully sent message from {From} to {To}", from, to);
             return response?.Data;
         }
+        catch (OperationCanceledException)
+        {
+            throw;
+        }
         catch (Exception exception)
         {
             _logger.LogError(exception, "Error sending message from {From} to {To}", from, to);
@@ -55,7 +58,7 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
     }
 
     public async ValueTask<MessagingOutboundMessagePayload?> SendMms(string from, string to, string text, List<string> mediaUrls, string messagingProfileId,
-        string? webhookUrl = null, Dictionary<string, string>? webhookHeaders = null, CancellationToken cancellationToken = default)
+        string? webhookUrl = null, CancellationToken cancellationToken = default)
     {
         try
         {
@@ -78,6 +81,10 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
             _logger.LogInformation("Successfully sent MMS message from {From} to {To}", from, to);
             return response?.Data;
         }
+        catch (OperationCanceledException)
+        {
+            throw;
+        }
         catch (Exception exception)
         {
             _logger.LogError(exception, "Error sending MMS message from {From} to {To}", from, to);
@@ -97,6 +104,10 @@ public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
 
             _logger.LogInformation("Successfully retrieved message {MessageId}", messageId);
             return response;
+        }
+        catch (OperationCanceledException)
+        {
+            throw;
         }
         catch (Exception exception)
         {

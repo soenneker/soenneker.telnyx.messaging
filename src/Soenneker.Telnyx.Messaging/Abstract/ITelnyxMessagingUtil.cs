@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Soenneker.Telnyx.Messaging.Abstract;
 
 /// <summary>
-/// A resilient .NET utility for Telnyx Messaging.
+/// Sends Telnyx SMS and MMS messages and retrieves messages by ID.
 /// </summary>
 public interface ITelnyxMessagingUtil
 {
@@ -18,11 +18,10 @@ public interface ITelnyxMessagingUtil
     /// <param name="text">The body of the SMS message.</param>
     /// <param name="messagingProfileId">The messaging profile ID to use for sending.</param>
     /// <param name="webhookUrl">An optional webhook URL for message status callbacks.</param>
-    /// <param name="webhookHeaders">Optional headers to send with the webhook.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The created message payload if successful; otherwise, <see langword="null"/>.</returns>
     ValueTask<MessagingOutboundMessagePayload?> Send(string from, string to, string text, string messagingProfileId, string? webhookUrl = null,
-        Dictionary<string, string>? webhookHeaders = null, CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Sends an outbound MMS message with media attachments using Telnyx.
@@ -33,11 +32,10 @@ public interface ITelnyxMessagingUtil
     /// <param name="mediaUrls">The media URLs to include in the message.</param>
     /// <param name="messagingProfileId">The messaging profile ID to use for sending.</param>
     /// <param name="webhookUrl">An optional webhook URL for message status callbacks.</param>
-    /// <param name="webhookHeaders">Optional headers to send with the webhook.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The created message payload if successful; otherwise, <see langword="null"/>.</returns>
     ValueTask<MessagingOutboundMessagePayload?> SendMms(string from, string to, string text, List<string> mediaUrls, string messagingProfileId,
-        string? webhookUrl = null, Dictionary<string, string>? webhookHeaders = null, CancellationToken cancellationToken = default);
+        string? webhookUrl = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Retrieves a message by its Telnyx message ID.
