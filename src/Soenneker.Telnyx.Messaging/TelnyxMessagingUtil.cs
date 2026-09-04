@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Soenneker.Telnyx.Messaging;
 
+/// <inheritdoc cref="ITelnyxMessagingUtil" />
 public sealed class TelnyxMessagingUtil : ITelnyxMessagingUtil
 {
     private readonly ITelnyxClientUtil _telnyxClientUtil;
