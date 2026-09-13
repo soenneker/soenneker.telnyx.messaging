@@ -43,6 +43,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Telnyx.ClientUtil" Version="4.0.915" />
+        <PackageReference Include="Soenneker.Telnyx.ClientUtil" Version="4.0.917" />
     </ItemGroup>
 </Project>
